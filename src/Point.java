@@ -2,10 +2,10 @@ import java.util.Comparator;
 
 public class Point implements Comparable<Point> {
     // compare points by slope to this point
-   public final Comparator<Point> SLOPE_ORDER = new SlopeComparator<Point>();
+   public final Comparator<Point> SLOPE_ORDER = new SlopeComparator();
 
-    public final int x;
-    public final int y;
+    private final int x;
+    private final int y;
 
     // create the point (x, y)
     public Point(int x, int y) {
@@ -49,15 +49,21 @@ public class Point implements Comparable<Point> {
 
         if (y1 == y0 && x1 == x0) return Double.NEGATIVE_INFINITY;
         if (y1 == y0 ) return Double.POSITIVE_INFINITY;
-        if (x1 == x0 ) return x1-x1/x1;
+        if (x1 == x0 ) return x1-x1/x1; //positive zero
         return (y1 - y0)/(x1 - x0);
     }
 
-    private class SlopeComparator<Point> implements Comparator<Point> {
+    private class SlopeComparator implements Comparator<Point> {
 
         @Override
         public int compare(Point o1, Point o2) {
-           return 0;
+//            double y0 = y, x0 = x;
+//            double y1 = o1.y, x1 = o1.x;
+//            double y2 = o2.y, x2 = o2.x;
+//
+            double slopeToO1 = slopeTo(o1);
+            double slopeToO2 = slopeTo(o2);
+            return (int)(slopeToO1-slopeToO1);
         }
     }
 }
