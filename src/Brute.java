@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Brute {
@@ -42,12 +44,27 @@ public class Brute {
                         double slope2 = points.get(p).slopeTo(points.get(r));
                         double slope3 = points.get(p).slopeTo(points.get(s));
 
+
                         if (slope1 == slope2 && slope1 == slope3 && slope2 == slope3) {
                             points.get(p).drawTo(points.get(q));
                             points.get(p).drawTo(points.get(r));
                             points.get(p).drawTo(points.get(s));
                             StdDraw.show(0);
-                            System.out.println(points.get(p)+" -> "+points.get(q)+" -> "+points.get(r)+" -> "+points.get(s));
+                            LinkedList<Point> line = new LinkedList<Point>();
+                            line.add(points.get(p));
+                            line.add(points.get(q));
+                            line.add(points.get(r));
+                            line.add(points.get(s));
+
+                            Collections.sort(line);
+                            line.getFirst().drawTo(line.getLast());
+                            StdDraw.show(0);
+                            String output = line.get(0).toString();
+                            for (int i = 1; i < line.size(); i++) {
+                                Point point = line.get(i);
+                                output += "->" + point;
+                            }
+                            System.out.println(output);
                         }
                     }
                 }
