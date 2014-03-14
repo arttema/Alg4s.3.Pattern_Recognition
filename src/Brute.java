@@ -13,7 +13,6 @@ public class Brute {
 
         List<Point> points= new ArrayList<Point>();
         // read in the points
-        int inputSize = 0;
         String filename = args[0];
         In in = new In(filename);
         int N = in.readInt();
@@ -23,7 +22,6 @@ public class Brute {
             Point p = new Point(x, y);
             p.draw();
             points.add(p);
-            inputSize++;
         }
 
         for (int p = 0; p < points.size()-1; p++) {
