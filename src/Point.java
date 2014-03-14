@@ -63,7 +63,7 @@ public class Point implements Comparable<Point> {
 //
             double slopeToO1 = slopeTo(o1);
             double slopeToO2 = slopeTo(o2);
-            return (int)(slopeToO1-slopeToO1);
+            return (int)(slopeToO1-slopeToO2);
         }
     }
 }

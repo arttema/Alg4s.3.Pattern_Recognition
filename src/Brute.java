@@ -24,11 +24,6 @@ public class Brute {
             inputSize++;
         }
 
-        //Point[] points = new Point[inputSize];
-        //System.arraycopy(points, 0, points, 0, inputSize);
-      //  Arrays.sort(points);
-       // points[1].drawTo(points[5]);
-        //Point temppoint;
         for (int p = 0; p < points.size()-1; p++) {
             for (int q = 1; q < points.size()-1; q++) {
 
@@ -43,7 +38,6 @@ public class Brute {
                         if (points.get(s).compareTo(points.get(r)) == 0 || points.get(s).compareTo(points.get(q)) == 0
                                 || points.get(s).compareTo(points.get(p)) == 0) continue;
 
-                        //temppoint = points.remove(p);
                         double slope1 = points.get(p).slopeTo(points.get(q));
                         double slope2 = points.get(p).slopeTo(points.get(r));
                         double slope3 = points.get(p).slopeTo(points.get(s));
