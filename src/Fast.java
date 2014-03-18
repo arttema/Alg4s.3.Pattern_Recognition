@@ -24,26 +24,28 @@ public class Fast {
             points.add(p);
         }
 
+        Collections.sort(points);
         Point pointP;
-        for (int p = 0; p < points.size(); p++) {
+        int size = points.size();
+        for (int p = 0; p < size; p++) {
 
             pointP = points.get(p);
-            points.remove(p);
-            for (int q = 0; q < points.size(); q++) {
+            for (int q = 0; q < size; q++) {
                 Point pointQ = points.get(q);
-//                if (pointQ.compareTo(pointP) == 0) continue;
 
-                Collections.sort(points, pointP.SLOPE_ORDER);
-                Collections.sort(points, Collections.reverseOrder());
+                Collections.sort(points.subList(q + 1, size));
+                Collections.sort(points.subList(q + 1, size), pointP.SLOPE_ORDER);
+                //Collections.sort(points, Collections.reverseOrder());
 
                 LinkedList<Point> line = new LinkedList<Point>();
                 line.add(pointP);
+                line.add(pointQ);
 
-                for (Point point : points) {
+                for (int i1 = q + 1; i1 < size; i1++) {
+                    Point point = points.get(i1);
                     if (point.slopeTo(pointP) == pointQ.slopeTo(pointP)) {
                         line.add(point);
-                    }
-                    else break;
+                    } else break;
                 }
 
                 if (line.size() >= 4) {
@@ -57,10 +59,12 @@ public class Fast {
                     }
                     System.out.println(output);
                 }
+                points.add(pointQ);
             }
-           // points.add(pointP);
+            points.add(pointP);
         }
 
         StdDraw.show(0);
     }
 }
+//if (pointQ.compareTo(pointP) == 0) continue;
