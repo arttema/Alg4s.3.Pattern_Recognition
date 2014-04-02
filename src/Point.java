@@ -48,11 +48,21 @@ public class Point implements Comparable<Point> {
         double y1 = that.y, x1 = that.x;
 
         if (y1 == y0 && x1 == x0) return Double.NEGATIVE_INFINITY;
-        if (y1 == y0 ) return Double.POSITIVE_INFINITY;
-        if (x1 == x0 ) return x1-x1/x1; //positive zero
+        if (x1 == x0 ) return Double.POSITIVE_INFINITY;
+        if (y1 == y0 ) {
+            double a = 1.0;
+            return (a-a)/a; //positive zero
+        }
         return (y1 - y0)/(x1 - x0);
     }
-
+    /**
+    *  sign of compare(), where p, q, and r have coordinates in [0, 500)
+      -  wrong order: slope-descending
+  *  sign of compare(), where p, q, and r have coordinates in [0, 32768)
+      -  wrong order: slope-descending
+  *  sign of compare(), where p, q, and r have coordinates in [0, 10)
+      -  wrong order: slope-descending
+     */
     private class SlopeComparator implements Comparator<Point> {
 
         @Override

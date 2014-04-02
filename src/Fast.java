@@ -4,6 +4,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Fast {
+    // todo problems with vertical only, horizontal only,
+    // todo eliminate extra duplicate segments everywhere
     public static void main(String[] args) {
 
         // rescale coordinates and turn on animation mode
@@ -16,6 +18,7 @@ public class Fast {
         String filename = args[0];
         In in = new In(filename);
         int N = in.readInt();
+
         for (int i = 0; i < N; i++) {
             int x = in.readInt();
             int y = in.readInt();
